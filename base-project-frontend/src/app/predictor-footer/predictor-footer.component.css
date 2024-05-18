@@ -1,0 +1,113 @@
+
+* {
+  font-family: "Avenir Next", "Avenir", "Arial", sans-serif;
+}
+h3 {
+  font-size: 35px;
+  color: white;
+  -webkit-box-flex: 100%;
+  -ms-flex: 100%;
+  flex: 100%;
+  text-align: left;
+}
+h4 {
+  color: white;
+}
+footer li,
+footer p,
+small,
+label {
+  color: white;
+}
+#page p,
+#page li {
+  text-align: justify;
+}
+footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+a {
+  color: rgba(173, 216, 230, 0.8);
+  text-decoration: none;
+}
+nav a:hover {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(173, 216, 230, 0.8)),
+    to(rgba(173, 216, 230, 0.8))
+  );
+  background: -o-linear-gradient(rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8));
+  background: linear-gradient(rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8));
+  background-position: 0 97%;
+  background-size: 100% 1px;
+  background-repeat: repeat-x;
+}
+p a {
+  display: inline-block;
+  height: 32px;
+}
+p a:hover {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(173, 216, 230, 0.8)),
+    to(rgba(173, 216, 230, 0.8))
+  );
+  background: -o-linear-gradient(rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8));
+  background: linear-gradient(rgba(173, 216, 230, 0.8), rgba(173, 216, 230, 0.8));
+  background-position: 0 100%;
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+}
+footer {
+  position: fixed;
+  width: 100%;
+
+  background-color: #3f51b590;
+  padding: 0 50px 0 50px;
+  top: calc(600px + ((100vh - 600px) / 2));
+  height: 100px;
+  font-size: smaller;
+  -webkit-transition: all 0.5s, left 0s;
+  -o-transition: all 0.5s, left 0s;
+  transition: all 0.5s, left 0s;
+  overflow: hidden;
+}
+footer:hover {
+  top: calc((100vh) / 1.35);
+  height: 100%;
+  padding: 0 50px 20px 50px;
+}
+footer h3 {
+  margin: 0;
+  line-height: 80px;
+}
+@media (max-height: 599px) {
+  body * {
+    display: none;
+  }
+  body::after {
+    content: "Your screen is too small! Try full screen view or resize your window.";
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    margin: 10px;
+  }
+}
+.lightblue {
+  fill:rgba(173, 216, 230, 0.8)
+}
+.lightblue-color {
+  color: #3f51b5;
+  font-weight: 500;
+  background-color: rgba(173, 216, 230, 0.8);
+}
+.gray-text-color {
+  color: #3f51b5;
+}

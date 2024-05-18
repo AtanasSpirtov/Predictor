@@ -1,0 +1,38 @@
+<h2 mat-dialog-title>Edit Prediction Request</h2>
+<mat-dialog-content>
+  <form [formGroup]="editPredictionRequestForm" autocomplete="off">
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Business Name</mat-label>
+      <input matInput formControlName="name">
+      <mat-error *ngIf="editPredictionRequestForm.get('name')?.hasError('required')">
+        Name is required!
+      </mat-error>
+      <mat-error *ngIf="editPredictionRequestForm.get('name')?.hasError('maxLength')">
+        Name max length is 100!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description">
+      <mat-error *ngIf="editPredictionRequestForm.get('description')?.hasError('maxLength')">
+        Description max length is 300!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Telephone</mat-label>
+      <input matInput formControlName="telephone">
+      <mat-error *ngIf="editPredictionRequestForm.get('telephone')?.hasError('required')">
+        Telephone is required!
+      </mat-error>
+      <mat-error *ngIf="editPredictionRequestForm.get('telephone')?.hasError('pattern')">
+        Incorrect phone pattern
+      </mat-error>
+    </mat-form-field>
+<!--    <vo-mat-fileUpload formControlName="fileFormGroup" [files]="getFileObject()">-->
+<!--    </vo-mat-fileUpload>-->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button [disabled]="!editPredictionRequestForm.valid" mat-raised-button color="primary" (click)="onConfirm()">Edit</button>
+  <button  mat-raised-button color="accent" (click)="onDismiss()">Cancel</button>
+</mat-dialog-actions>

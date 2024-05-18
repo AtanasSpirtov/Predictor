@@ -1,0 +1,38 @@
+table {
+  width: 100%;
+}
+
+.table-container {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 1000px;
+}
+
+.custom-jumbotron {
+  background-color: #f5f5f5;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center; /* Center the content */
+  align-items: center; /* Center items vertically */
+  padding: 1rem 0; /* Adjust the padding as needed */
+  position: relative; /* For absolute positioning of the button */
+  height: 200px;
+  box-shadow: none;
+}
+
+.jumbotron-title {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-user-button {
+  margin: 10px;
+}
+
+.mat-icon {
+  cursor: pointer;
+}

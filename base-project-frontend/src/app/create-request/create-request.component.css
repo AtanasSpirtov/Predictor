@@ -1,0 +1,29 @@
+.mat-elevation-z8 {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th.mat-header-cell {
+  background-color: #ffffff;
+  color: #333;
+  font-weight: bold;
+  padding: 8px;
+  text-align: left;
+}
+
+td.mat-cell {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  /*border-top: 1px solid #ffffff;*/
+}
+
+.table-row:hover {
+  background-color: #ffffff;
+}

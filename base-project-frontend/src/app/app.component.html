@@ -1,0 +1,13 @@
+<ng-container *ngIf="userInfo.username != '' && userInfo.accessToken != ''">
+  <mat-toolbar color="primary">
+    <span>Base App</span>
+    <span class="flex-toolbar"></span>
+    <button matTooltip="Logout" mat-icon-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+</ng-container>
+<router-outlet></router-outlet>
+<ng-container *ngIf="userInfo.username != '' && userInfo.accessToken != ''">
+  <app-predictor-footer></app-predictor-footer>
+</ng-container>

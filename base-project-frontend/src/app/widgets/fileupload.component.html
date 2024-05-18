@@ -1,0 +1,35 @@
+<form *ngIf="fileFormGroup" [formGroup]="fileFormGroup">
+  <button mat-raised-button color="primary" (click)="onClick($event)" *ngIf="this.files.length != 1">
+    <mat-icon>add</mat-icon>
+    {{ chooseLabel }}
+  </button>
+  <input #fileUpload
+         type="file"
+         class="input_fileupload--hidden"
+         (input)="onInput($event)"
+         (change)="onFileSelected($event)"
+         [accept]="accept"
+  >
+  <mat-error *ngIf="this.fileFormGroup?.get('fileStream')?.hasError('required')">
+    File is required!
+  </mat-error>
+
+  <mat-form-field class="pad">
+    <mat-label>FileStream</mat-label>
+    <input matInput formControlName="fileStream">
+  </mat-form-field>
+
+
+  <div *ngFor="let f of files">
+    <mat-card>
+    <span>{{ f.name }}</span>
+      <button mat-icon-button
+              color="primary"
+              [attr.title]="deleteButtonLabel?deleteButtonLabel:null"
+              (click)="removeFile(f)"
+      >
+        <mat-icon>{{ deleteButtonIcon }}</mat-icon>
+      </button>
+    </mat-card>
+  </div>
+</form>

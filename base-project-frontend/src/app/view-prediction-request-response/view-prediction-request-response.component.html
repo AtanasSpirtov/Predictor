@@ -1,0 +1,73 @@
+<div class="main-app pad">
+  <h1>Prediction</h1>
+  <h2>for 3 months period:</h2>
+  <mat-card>
+  <div class="row">
+      <div class="col-6">
+        <mat-card>
+          <div class="row">
+            <mat-card-title
+              class="col-5">Name:
+            </mat-card-title>
+            <mat-card-title class="col-7 relative-size">{{ predictionResponseForRequest[0].predictionRequest.name }}
+            </mat-card-title>
+          </div>
+          <div class="grey-color">
+            <div class="row">
+              <p class="col-5">Description:</p>
+              <mat-card-subtitle
+                class="col-7">{{ predictionResponseForRequest[0].predictionRequest.description }}
+              </mat-card-subtitle>
+            </div>
+            <div class="row">
+              <p class="col-5">Telephone:</p>
+              <mat-card-subtitle
+                class="col-7">{{ predictionResponseForRequest[0].predictionRequest.telephone }}
+              </mat-card-subtitle>
+            </div>
+            <div class="row">
+              <p class="col-5">Excel file:</p>
+              <!--            <mat-card-subtitle-->
+              <!--              class="col-7 long-text">{{predictionResponseForRequest[0].predictionRequest.excelFile}}</mat-card-subtitle>-->
+            </div>
+            <div class="row">
+              <p class="col-5">Prediction start date:</p>
+              <mat-card-subtitle class="col-7">{{ predictionResponseForRequest[0].date }}</mat-card-subtitle>
+            </div>
+            <div class="row">
+              <p class="col-5">Average value predicted for period:</p>
+              <mat-card-subtitle
+                class="col-7">{{ getAverageValue() }}
+              </mat-card-subtitle>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+      <div class="col-6">
+        <mat-card>
+          <line-chart-skeleton-loader [showData]="lineChartContext != null"
+                                      [lgWide]="false" [lgHeight]="true">
+            <canvas class="full-width card-max-height" baseChart
+                    *ngIf="lineChartContext"
+                    [datasets]="lineChartContext.chartDataSets"
+                    [labels]="lineChartContext.chartLabels"
+                    [type]="'line'"
+                    [options]="lineChartContext.options"
+                    [legend]="false"
+                    height="400px"
+            ></canvas>
+          </line-chart-skeleton-loader>
+        </mat-card>
+      </div>
+  </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="spacer vertical-align">
+          <button mat-raised-button color="primary" (click)="goToListRequests()">
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
