@@ -1,9 +1,9 @@
 package com.base.baseprojectbackend.controller;
 
-import com.base.baseprojectbackend.dto.PredictionRequestDTO;
 import com.base.baseprojectbackend.dto.PredictionResponseDTO;
 import com.base.baseprojectbackend.service.PredictionRequestsService;
 import com.base.baseprojectbackend.service.PredictionResponseService;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,8 +17,10 @@ import java.util.List;
 @RequestMapping(value = "responses")
 @PreAuthorize(value = "hasRole('ROLE_USER')")
 public class PredictionResponseController extends BaseControllerClass {
-    public PredictionResponseController(PredictionRequestsService predictionRequestsService, PredictionResponseService predictionResponseService) {
-        super(predictionRequestsService, predictionResponseService);
+    public PredictionResponseController(PredictionRequestsService predictionRequestsService,
+                                        PredictionResponseService predictionResponseService,
+                                        ApplicationEventPublisher eventPublisher) {
+        super(predictionRequestsService, predictionResponseService, eventPublisher);
     }
 
     @GetMapping("/view/{id}")

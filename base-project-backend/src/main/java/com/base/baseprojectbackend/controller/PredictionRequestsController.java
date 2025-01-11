@@ -1,9 +1,11 @@
 package com.base.baseprojectbackend.controller;
 
 import com.base.baseprojectbackend.dto.PredictionRequestDTO;
+import com.base.baseprojectbackend.event.SavePredictionRequestEvent;
 import com.base.baseprojectbackend.model.PredictionRequest;
 import com.base.baseprojectbackend.service.PredictionRequestsService;
 import com.base.baseprojectbackend.service.PredictionResponseService;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,8 +21,11 @@ import java.util.Map;
 @PreAuthorize(value = "hasRole('ROLE_USER')")
 public class PredictionRequestsController extends BaseControllerClass {
 
-    public PredictionRequestsController(PredictionRequestsService predictionRequestsService, PredictionResponseService predictionResponseService) {
-        super(predictionRequestsService, predictionResponseService);
+    public PredictionRequestsController(PredictionRequestsService predictionRequestsService,
+                                        PredictionResponseService predictionResponseService,
+                                        ApplicationEventPublisher eventPublisher
+                                        ) {
+        super(predictionRequestsService, predictionResponseService, eventPublisher);
     }
 
     @GetMapping("/list")
@@ -70,17 +75,17 @@ public class PredictionRequestsController extends BaseControllerClass {
                 predictionRequest.getStatus()
         ));
         String principalUsername = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        String savePredictionResponse = predictionRequestsService.savePredictionRequest(
-                new PredictionRequest(
-                        predictionRequest.getId(),
-                        predictionRequest.getName(),
-                        predictionRequest.getDescription(),
-                        predictionRequest.getStatus(),
-                        predictionRequest.getTelephone(),
-                        predictionRequest.getExcelFile(),
-                        principalUsername
-                )
+        PredictionRequest predictionRequestDb =  new PredictionRequest(
+                predictionRequest.getId(),
+                predictionRequest.getName(),
+                predictionRequest.getDescription(),
+                predictionRequest.getStatus(),
+                predictionRequest.getTelephone(),
+                predictionRequest.getExcelFile(),
+                principalUsername
         );
+        eventPublisher.publishEvent(new SavePredictionRequestEvent(this, predictionRequestDb));
+        String savePredictionResponse = predictionRequestsService.savePredictionRequest(predictionRequestDb);
         return ResponseEntity.ok(new Message(savePredictionResponse));
     }
 
